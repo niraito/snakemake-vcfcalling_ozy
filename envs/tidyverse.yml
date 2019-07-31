@@ -1,0 +1,5 @@
+channels:
+  - r
+dependencies:
+  - r-tidyverse ==1.2.1
+  - r-dt==0.5

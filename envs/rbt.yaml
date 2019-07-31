@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - rust-bio-tools =0.2.7
+  - openssl =1.0
+  - bcftools =1.8
