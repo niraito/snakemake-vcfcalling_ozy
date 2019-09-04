@@ -1,3 +1,28 @@
+rule recalibrate_base_qualities:
+    input:
+        bam=get_recal_input(),
+        bai=get_recal_input(bai=True),
+        ref=config["ref"]["genome"],
+        known=config["ref"]["known-variants"]
+    output:
+        bam=protected("recal/{sample}-{unit}.bam")
+    params:
+        extra=get_regions_param() + config["params"]["gatk"]["BaseRecalibrator"]
+    log:
+        "logs/gatk/bqsr/{sample}-{unit}.log"
+    wrapper:
+        "0.27.1/bio/gatk/baserecalibrator"
+
+
+rule samtools_index:
+    input:
+        "{prefix}.bam"
+    output:
+        "{prefix}.bam.bai"
+    wrapper:
+        "0.27.1/bio/samtools/index"
+
+
 if "restrict-regions" in config["processing"]:
     rule compose_regions:
         input:

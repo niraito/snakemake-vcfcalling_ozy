@@ -32,6 +32,8 @@ processing:
   # region-padding: 100
 
 params:
+  # please select "freebayes" or "gatk"
+  caller: "freebayes"
   gatk:
     HaplotypeCaller: ""
     BaseRecalibrator: ""

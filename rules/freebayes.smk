@@ -1,8 +1,16 @@
+rule samtools_index:
+    input:
+        "dedup/{sample}-{unit}.bam"
+    output:
+        "dedup/{sample}-{unit}.bam.bai"
+    wrapper:
+        "0.37.1/bio/samtools/index"
+
 rule freebayes:
     input:
         ref=config["ref"]["genome"],
         # you can have a list of samples here
-        samples=get_recal_input()
+        samples="dedup/{sample}-{unit}.bam"
     output:
         "filtered/{sample}.vcf.gz"   
     log:

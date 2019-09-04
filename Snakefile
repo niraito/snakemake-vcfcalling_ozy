@@ -10,8 +10,13 @@ rule all:
 ##### Modules #####
 
 include: "rules/mapping.smk"
-include: "rules/calling.smk"
-include: "rules/filtering.smk"
+if config["params"]["caller"] == "freebayes":
+    include: "rules/freebayes.smk"
+elif config["params"]["caller"] == "gatk":
+    include: "rules/calling.smk"
+    include: "rules/filtering.smk"
+else:
+    sys.exit("Error: Wrong caller! Available callers are GATK or Freebayes.")
 include: "rules/stats.smk"
 include: "rules/qc.smk"
 include: "rules/annotation.smk"
