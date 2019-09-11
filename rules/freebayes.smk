@@ -10,14 +10,15 @@ rule freebayes:
     input:
         ref=config["ref"]["genome"],
         # you can have a list of samples here
-        samples="dedup/{sample}-1.bam"
+        samples="dedup/{sample}-1.bam",
+        index= "dedup/{sample}-1.bam.bai"
     output:
-        "filtered/{sample}.vcf.gz"   
+        "filtered/{sample}.vcf"   
     log:
         "logs/freebayes/{sample}.log"
     params:
         extra="-C 5 --min-coverage 20 ",         # optional parameters
-        chunksize=100000  # reference genome chunk size for parallelization (default: 100000)
+        chunksize=10000000  # reference genome chunk size for parallelization (default: 100000)
     threads: 4
     wrapper:
         "0.36.0/bio/freebayes"

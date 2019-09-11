@@ -1,8 +1,8 @@
 rule snpeff:
     input:
-        "filtered/{sample}.vcf.gz",
+        "filtered/{sample}.vcf",
     output:
-        vcf=report("annotated/{sample}.vcf.gz", caption="../report/vcf.rst", category="Calls"),
+        vcf=report("annotated/{sample}.vcf", caption="../report/vcf.rst", category="Calls"),
         csvstats="snpeff/{sample}.csv"
     log:
         "logs/snpeff{sample}.log"

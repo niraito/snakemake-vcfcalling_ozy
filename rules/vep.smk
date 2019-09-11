@@ -1,6 +1,6 @@
 rule veptest:
     input: 
-        vcf="annotated/{sample}.vcf.gz",
+        vcf="annotated/{sample}.vcf",
         genome=config["ref"]["genome-vep"],
         vepdir=config["ref"]["vepdir"]
     output: 
