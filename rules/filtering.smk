@@ -58,7 +58,7 @@ rule merge_calls:
                               if config["filtering"]["vqsr"]
                               else "hardfiltered")
     output:
-        vcf="filtered/{sample}.vcf.gz"
+        vcf="filtered/{sample}.vcf"
     log:
         "logs/picard/{sample}.merge-filtered.log"
     wrapper:
