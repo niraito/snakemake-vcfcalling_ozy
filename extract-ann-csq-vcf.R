@@ -4,7 +4,7 @@ library(tidyverse)
 filename <- snakemake@input[[1]]
 contents <- read_tsv(filename, comment="#")
 sample_name <- snakemake@params$sample_name
-main_cols <- c("CHROM","POS","ID","REF","ALT","QUAL","FILTER")
+main_cols <- c("CHROM","POS","ID","REF","ALT","QUAL","FILTER","DP","GT_text","AD")
 ann_cols <- snakemake@params$ann
 csq_cols <- snakemake@params$csq
 
