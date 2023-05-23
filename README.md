@@ -42,3 +42,5 @@ The pipeline will run the following rules in order:
 Speficic for this test, following DAG will be executed for given samples and units.
 
 ![whole-dag](dag.svg)
+
+
